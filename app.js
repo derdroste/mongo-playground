@@ -76,7 +76,15 @@ async function updateCourse(id) {
     await course.save()
         .then(result => console.log(result))
         .catch(err => console.log(err));
+
     // Approach: Update first
+    await Course.findByIdAndUpdate(id, {
+        $set: {
+            author: 'Lukas',
+            isPublished: false
+        }
+    }, {new: true}).then(result => console.log(result));
+
 }
 
 updateCourse('5fb44638945b5a0824d04e0b');
