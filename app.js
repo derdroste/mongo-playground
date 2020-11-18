@@ -63,6 +63,24 @@ async function getCourses() {
         .then(result => console.log(result));
 }
 
-getCourses();
+async function updateCourse(id) {
+    // Approach: Query first
+    const course = await Course.findById(id);
+    if (!course) return;
+
+    course.set({
+        isPublished: true,
+        author: 'Another Author'
+    });
+
+    await course.save()
+        .then(result => console.log(result))
+        .catch(err => console.log(err));
+    // Approach: Update first
+}
+
+updateCourse('5fb44638945b5a0824d04e0b');
+
+// getCourses();
 
 // createCourse();
