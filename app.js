@@ -84,10 +84,16 @@ async function updateCourse(id) {
             isPublished: false
         }
     }, {new: true}).then(result => console.log(result));
-
 }
 
-updateCourse('5fb44638945b5a0824d04e0b');
+async function removeCourse(id) {
+    await Course.findByIdAndRemove(id)
+        .then(result => console.log(result));
+}
+
+removeCourse('5fb44638945b5a0824d04e0b');
+
+// updateCourse('5fb44638945b5a0824d04e0b');
 
 // getCourses();
 
